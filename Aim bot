@@ -1,0 +1,21 @@
+--[[ Protected by Lua Guard ]]
+
+( function (...) local _IIIllIIlll = game.Players.LocalPlayer local _IIIIIIIIlI = workspace.CurrentCamera local _IIIIllIIll = game:GetService("\082\117\110\083\101\114\118\105\099\101") local _lIIIIIlIll = false local _lIIIIllIlI = 0x78 local _IIIlIlIIII = 0x14 local _IlllIIllll = Instance.new("\083\099\114\101\101\110\071\117\105") _IlllIIllll.ResetOnSpawn = false _IlllIIllll.Parent = _IIIllIIlll:WaitForChild("\080\108\097\121\101\114\071\117\105") local _lIIIlIIIlI = Instance.new("\084\101\120\116\066\117\116\116\111\110") _lIIIlIIIlI.Parent = _IlllIIllll _lIIIlIIIlI.Size = UDim2.new(0x0,0x3C,0x0,0x3C) _lIIIlIIIlI.Position = UDim2.new(0.8,0x0,0.5,0x0) _lIIIlIIIlI.BackgroundColor3 = Color3.fromRGB(0x0,0x0,0x0) _lIIIlIIIlI.TextColor3 = Color3.fromRGB(0xFF,0xFF,0xFF) _lIIIlIIIlI.Text = "\067\097\109\092\110\076\111\099\107" _lIIIlIIIlI.TextScaled = true _lIIIlIIIlI.Active = true _lIIIlIIIlI.Draggable = true _lIIIlIIIlI.MouseButton1Click:Connect( function () _lIIIIIlIll = not _lIIIIIlIll if _lIIIIIlIll then _lIIIlIIIlI.BackgroundColor3 = Color3.fromRGB(0x0,0xFF,0x0) else _lIIIlIIIlI.BackgroundColor3 = Color3.fromRGB(0x0,0x0,0x0) end
+ end
+ ) local _lIIlllIlll = Instance.new("\070\114\097\109\101") _lIIlllIlll.Parent = _IlllIIllll _lIIlllIlll.Size = UDim2.new(0x0,_lIIIIllIlI*0x2,0x0,_lIIIIllIlI*0x2) _lIIlllIlll.Position = UDim2.new(0.5,-_lIIIIllIlI,0.5,-_lIIIIllIlI) _lIIlllIlll.BackgroundTransparency = 0x1 local _lllIIlIlIl = Instance.new("\085\073\083\116\114\111\107\101") _lllIIlIlIl.Parent = _lIIlllIlll _lllIIlIlIl.Thickness = 0x2 _lllIIlIlIl.Color = Color3.fromRGB(0xFF,0xFF,0xFF) local _IllIllIIll = Instance.new("\085\073\067\111\114\110\101\114") _IllIllIIll.Parent = _lIIlllIlll _IllIllIIll.CornerRadius = UDim.new(0x1,0x0) local _IllllIlIIl = Instance.new("\072\105\103\104\108\105\103\104\116") _IllllIlIIl.FillColor = Color3.fromRGB(0xFF,0x0,0x0) _IllllIlIIl.OutlineColor = Color3.fromRGB(0xFF,0x0,0x0) _IllllIlIIl.FillTransparency = 0.5 _IllllIlIIl.Parent = game.CoreGui local function _IlIIlIlIll(char) local _lllIIIIllI = char:FindFirstChild("\072\117\109\097\110\111\105\100") return _lllIIIIllI and _lllIIIIllI.Health > 0x0 end
+ local function _IlllIIlIIl() local _IIIIllIIIl = nil local _IIlIIIIIII = _lIIIIllIlI for _,v in pairs(game.Players:GetPlayers()) do if v ~= _IIIllIIlll and v.Team ~= _IIIllIIlll.Team and v.Character and v.Character:FindFirstChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116") and _IlIIlIlIll(v.Character) then local _lIlIIIIIlI, visible = _IIIIIIIIlI:WorldToViewportPoint(v.Character.HumanoidRootPart.Position) if visible then local _IIlllIIlll = (Vector2.new(_lIlIIIIIlI.X,_lIlIIIIIlI.Y) - Vector2.new(_IIIIIIIIlI.ViewportSize.X/0x2,_IIIIIIIIlI.ViewportSize.Y/0x2)).Magnitude if _IIlllIIlll < _IIlIIIIIII then _IIlIIIIIII = _IIlllIIlll _IIIIllIIIl = v end
+ end
+ end
+ end
+ return _IIIIllIIIl end
+ local function _lIlllIlIII() local _IIlIIIlIIl = _IIIllIIlll.Character if not _IIlIIIlIIl or not _IIlIIIlIIl:FindFirstChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116") then return nil end
+ local _lIlIllIlIl = _IIlIIIlIIl.HumanoidRootPart.Position local _IIIIllIIIl = nil local _IIlIIIIIII = _IIIlIlIIII for _,v in pairs(game.Players:GetPlayers()) do if v ~= _IIIllIIlll and v.Team ~= _IIIllIIlll.Team and v.Character and v.Character:FindFirstChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116") and _IlIIlIlIll(v.Character) then local _IIlllIIlll = (v.Character.HumanoidRootPart.Position - _lIlIllIlIl).Magnitude if _IIlllIIlll < _IIlIIIIIII then _IIlIIIIIII = _IIlllIIlll _IIIIllIIIl = v end
+ end
+ end
+ return _IIIIllIIIl end
+ _IIIIllIIll.RenderStepped:Connect( function () if _lIIIIIlIll then local _lIllIIlIll = _lIlllIlIII() if _lIllIIlIll then _lIIlllIlll.Visible = false else _lIllIIlIll = _IlllIIlIIl() _lIIlllIlll.Visible = true end
+ if _lIllIIlIll and _lIllIIlIll.Character and _IlIIlIlIll(_lIllIIlIll.Character) then local _IllIIllllI = _lIllIIlIll.Character.HumanoidRootPart _IIIIIIIIlI.CFrame = CFrame.new(_IIIIIIIIlI.CFrame.Position, _IllIIllllI.Position) _IllllIlIIl.Adornee = _lIllIIlIll.Character else _IllllIlIIl.Adornee = nil end
+ else _IllllIlIIl.Adornee = nil end
+ end
+ ) end
+ )(...)
